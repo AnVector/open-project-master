@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/theme_bg"
+    tools:context=".view.activity.ChannelActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/channel_category_rv"
+        android:layout_width="@dimen/d180"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:clickable="false"
+        android:focusable="false"
+        android:scrollbars="none" />
+
+    <com.open.androidtvwidget.recycle.RecyclerViewTV
+        android:id="@+id/recyclerView"
+        android:layout_width="@dimen/d1150"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/channel_category_rv"
+        android:layout_alignTop="@id/channel_category_rv"
+        android:focusable="false"
+        android:padding="@dimen/d10"
+        android:clipToPadding="false"
+        android:clipChildren="false">
+
+    </com.open.androidtvwidget.recycle.RecyclerViewTV>
+
+    <com.open.androidtvwidget.view.MainUpView
+        android:id="@+id/mainUpView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

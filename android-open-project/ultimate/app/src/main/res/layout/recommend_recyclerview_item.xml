@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/d380"
+              android:gravity="center"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/d10"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/nick_name_tv"
+            android:layout_width="@dimen/d0"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/head_portrait"
+            android:drawablePadding="@dimen/d5"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/s22"/>
+        <View
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d0"
+            android:layout_weight="1"></View>
+
+        <TextView
+            android:id="@+id/release_time_tv"
+            android:layout_width="@dimen/d0"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/time"
+            android:drawablePadding="@dimen/d5"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/dark_gray"
+            android:textSize="@dimen/d18"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/content_pic"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d270"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/content_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingTop="@dimen/d10"
+        android:paddingBottom="@dimen/d10"
+        android:textColor="@color/black"
+        android:textSize="@dimen/s22"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/comment_count_tv"
+            android:layout_width="@dimen/d0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/d30"
+            android:drawableLeft="@drawable/comments"
+            android:drawablePadding="@dimen/d5"
+            android:gravity="center_vertical"
+            android:textColor="@color/dark_gray"
+            android:textSize="@dimen/s20"/>
+
+        <View
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d0"
+            android:layout_weight="2"></View>
+
+        <TextView
+            android:id="@+id/like_count_tv"
+            android:layout_width="@dimen/d0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/like"
+            android:drawablePadding="@dimen/d5"
+            android:gravity="center_vertical"
+            android:textColor="@color/dark_gray"
+            android:textSize="@dimen/s20"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d1"
+        android:layout_marginTop="@dimen/d20"
+        android:background="@color/light_gray"></View>
+
+</LinearLayout>

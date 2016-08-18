@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/theme_bg"
+    tools:context="com.looper.ultimate.view.activity.FrontPageActivity">
+
+    <com.looper.ultimate.view.widget.MiddleHorizontalScrollView
+        android:id="@+id/hscroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <com.open.androidtvwidget.view.MainLayout
+            android:id="@+id/main_lay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/d10"
+            android:paddingRight="@dimen/d10"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:gravity="center_vertical">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/channel_category_rv"
+                android:layout_width="@dimen/d180"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:scrollbars="none" />
+            <ImageView
+                android:id="@+id/rec_img"
+                android:layout_width="@dimen/d615"
+                android:layout_height="@dimen/d340"
+                android:layout_alignTop="@id/channel_category_rv"
+                android:layout_toRightOf="@id/channel_category_rv"
+                android:layout_marginLeft="@dimen/d10"
+                android:focusable="true"
+                android:clickable="true"
+                android:padding="@dimen/d5"
+                android:scaleType="fitXY"
+                android:src="@drawable/default8"/>
+            <ImageView
+                android:id="@+id/bottom_left_img"
+                android:layout_width="@dimen/d300"
+                android:layout_height="@dimen/d144"
+                android:layout_below="@id/rec_img"
+                android:layout_alignLeft="@id/rec_img"
+                android:focusable="true"
+                android:clickable="true"
+                android:padding="@dimen/d5"
+                android:scaleType="fitXY"
+                android:src="@drawable/default5"/>
+            <ImageView
+                android:id="@+id/bottom_right_img"
+                android:layout_width="@dimen/d270"
+                android:layout_height="@dimen/d144"
+                android:layout_below="@id/rec_img"
+                android:layout_alignRight="@id/rec_img"
+                android:focusable="true"
+                android:clickable="true"
+                android:padding="@dimen/d5"
+                android:scaleType="fitXY"
+                android:src="@drawable/default5"/>
+        </com.open.androidtvwidget.view.MainLayout>
+    </com.looper.ultimate.view.widget.MiddleHorizontalScrollView>
+
+    <com.open.androidtvwidget.view.MainUpView
+        android:id="@+id/mainUpView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

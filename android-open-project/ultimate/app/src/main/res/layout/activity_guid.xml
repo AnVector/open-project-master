@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    tools:context="com.looper.ultimate.view.activity.GuidActivity">
+
+    <com.looper.ultimate.view.widget.GuidViewPager
+        android:id="@+id/guid_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"></com.looper.ultimate.view.widget.GuidViewPager>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/d96"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d0"
+            android:layout_weight="1"></View>
+
+        <RadioGroup
+            android:layout_width="@dimen/d0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/guid_dot_1"
+                style="@style/guid_dot_style"
+                android:checked="true"/>
+            <RadioButton
+                android:id="@+id/guid_dot_2"
+                style="@style/guid_dot_style"/>
+            <RadioButton
+                android:id="@+id/guid_dot_3"
+                style="@style/guid_dot_style"/>
+            <RadioButton
+                android:id="@+id/guid_dot_4"
+                style="@style/guid_dot_style"/>
+        </RadioGroup>
+
+        <View
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d0"
+            android:layout_weight="1"></View>
+
+    </LinearLayout>
+
+</RelativeLayout>

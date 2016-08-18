@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:focusable="true"
+              android:clickable="true"
+              android:clipChildren="false"
+              android:clipToPadding="false"
+              android:gravity="center"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/d68">
+    <TextView
+        android:id="@+id/channel_category_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/s24"
+        android:textColor="@color/item_title_color"/>
+</LinearLayout>

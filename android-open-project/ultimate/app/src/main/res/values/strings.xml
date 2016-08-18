@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">ultimate</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="timer_seconds">跳过&#160;%1$ds</string>
+    <string name="release_content_hint">Say something...</string>
+    <string name="login_success">login success</string>
+    <string name="moments">MOMENTS</string>
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
+    <string name="share_the_moments">Share the moments !</string>
+    <string name="photos">PHOTOS</string>
+    <string name="release">release</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="next">NEXT</string>
+    <string name="register">REGISTER</string>
+    <!--咪咕学堂2.0-->
+    <string name="search">搜索</string>
+    <string name="infant_education">亲子幼儿</string>
+    <string name="primary_education">小学课堂</string>
+    <string name="secondary_education">中学课堂</string>
+    <string name="healthy_life">健康生活</string>
+    <string name="professional_life">赢在职场</string>
+</resources>

@@ -1,0 +1,127 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'org.greenrobot.greendao'
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "24.0.0"
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        applicationId "com.looper.ultimate"
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "GooglePaly"]
+    }
+
+    configurations {
+        all*.exclude group: 'com.nineoldandroids', module: 'library'
+    }
+
+    //忽略Lint错误
+    /*lintOptions {
+        abortOnError false
+    }*/
+
+    //签名配置
+//    signingConfigs{
+//
+//        debug{
+//            storeFile file("")
+//        }
+//        release{
+//            storeFile file("")
+//            storePassword ""
+//            keyAlias ""
+//            keyPassword ""
+//        }
+//    }
+
+    /*多渠道打包*/
+    productFlavors {
+        GooglePlay {
+            applicationId = "com.googleplay.ultimate"
+        }
+        xiaomi {
+            applicationId = "com.xiaomi.ultimate"
+        }
+        umeng {
+            applicationId = "com.umeng.ultimate"
+        }
+    }
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+
+    buildTypes {
+
+        debug {
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "String", "API_URL", '"http://dev.goodev.org/"'
+
+            versionNameSuffix "-debug"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+//            signingConfig signingConfigs.debug
+        }
+
+        release {
+            //不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+//          signingConfig signingConfigs.release
+            shrinkResources true //自动移除无用的resource文件
+            minifyEnabled true//混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/main/java-gen']
+        }
+    }
+}
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    //多dex支持(打包65k方法书限制)
+    //内存泄漏检测
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+    //网络请求
+    compile project(':libraries:LemonHttpLibrary')
+    //android TV library
+    compile project(':AndroidTvWidget')
+    //Volley 异步网络请求框架
+    //友盟统计
+    //图片加载库Glide及网络异步请求库Volley
+    //动画兼容库
+    compile files('libs/afinal_0.5.1_bin.jar')
+    //butterkinfe
+    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    //RxJava
+    //Retrofit
+    //greendao
+    //material design
+    compile 'org.apache.httpcomponents:httpcore:4.4.2'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    compile 'com.github.bumptech.glide:volley-integration:1.4.0'
+    compile 'com.jakewharton:butterknife:8.2.1'
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'de.greenrobot:greendao:2.1.0'
+    compile 'com.android.support:cardview-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
+    compile 'com.android.support:support-v4:23.3.0'
+}

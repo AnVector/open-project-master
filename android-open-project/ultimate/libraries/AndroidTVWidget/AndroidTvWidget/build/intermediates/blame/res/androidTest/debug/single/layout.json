@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\open_listview_view.xml",
+        "source": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\bundles\\debug\\res\\layout\\open_listview_view.xml"
+    },
+    {
+        "merged": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\list_menu_item_layout.xml",
+        "source": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\bundles\\debug\\res\\layout\\list_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\softkey_layout_view.xml",
+        "source": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\bundles\\debug\\res\\layout\\softkey_layout_view.xml"
+    },
+    {
+        "merged": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\tabhost_title_head.xml",
+        "source": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\bundles\\debug\\res\\layout\\tabhost_title_head.xml"
+    },
+    {
+        "merged": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\list_menu_item_icon.xml",
+        "source": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\bundles\\debug\\res\\layout\\list_menu_item_icon.xml"
+    }
+]

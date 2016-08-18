@@ -1,0 +1,296 @@
+[
+    {
+        "outputFile": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\res\\merged\\release\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 50,
+                    "endOffset": 101
+                },
+                "from": {
+                    "file": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 147,
+                        "endColumn": 50,
+                        "endOffset": 193
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 106,
+                    "endColumn": 47,
+                    "endOffset": 149
+                },
+                "from": {
+                    "file": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 98,
+                        "endColumn": 47,
+                        "endOffset": 141
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 154,
+                    "endColumn": 39,
+                    "endOffset": 189
+                },
+                "from": {
+                    "file": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endColumn": 39,
+                        "endOffset": 92
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 2723,
+                    "endColumn": 42,
+                    "endOffset": 2761
+                },
+                "from": {
+                    "file": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 74,
+                        "endColumn": 42,
+                        "endOffset": 112
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 2766,
+                    "endColumn": 74,
+                    "endOffset": 2836
+                },
+                "from": {
+                    "file": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\exploded-aar\\com.android.support\\recyclerview-v7\\23.3.0\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 327,
+                        "endColumn": 74,
+                        "endOffset": 397
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 2841,
+                    "endColumn": 75,
+                    "endOffset": 2912
+                },
+                "from": {
+                    "file": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\exploded-aar\\com.android.support\\recyclerview-v7\\23.3.0\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 402,
+                        "endColumn": 75,
+                        "endOffset": 473
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 2917,
+                    "endColumn": 71,
+                    "endOffset": 2984
+                },
+                "from": {
+                    "file": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\exploded-aar\\com.android.support\\recyclerview-v7\\23.3.0\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 478,
+                        "endColumn": 71,
+                        "endOffset": 545
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 2989,
+                    "endColumn": 65,
+                    "endOffset": 3050
+                },
+                "from": {
+                    "file": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\exploded-aar\\com.android.support\\recyclerview-v7\\23.3.0\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 550,
+                        "endColumn": 65,
+                        "endOffset": 611
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 3055,
+                    "endColumn": 52,
+                    "endOffset": 3103
+                },
+                "from": {
+                    "file": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 304,
+                        "endColumn": 52,
+                        "endOffset": 352
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 3108,
+                    "endColumn": 54,
+                    "endOffset": 3158
+                },
+                "from": {
+                    "file": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 1,
+                        "startOffset": 116,
+                        "endColumn": 51,
+                        "endOffset": 166
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 3163,
+                    "endColumn": 61,
+                    "endOffset": 3220
+                },
+                "from": {
+                    "file": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endColumn": 61,
+                        "endOffset": 114
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 3225,
+                    "endColumn": 65,
+                    "endOffset": 3286
+                },
+                "from": {
+                    "file": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 1,
+                        "startOffset": 236,
+                        "endColumn": 62,
+                        "endOffset": 297
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 3291,
+                    "endColumn": 68,
+                    "endOffset": 3355
+                },
+                "from": {
+                    "file": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 1,
+                        "startOffset": 170,
+                        "endColumn": 65,
+                        "endOffset": 234
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 3360,
+                    "endLine": 27,
+                    "endColumn": 12,
+                    "endOffset": 3646
+                },
+                "from": {
+                    "file": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 186,
+                        "endLine": 12,
+                        "endColumn": 12,
+                        "endOffset": 472
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 3651,
+                    "endLine": 30,
+                    "endColumn": 12,
+                    "endOffset": 3806
+                },
+                "from": {
+                    "file": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 510,
+                        "endLine": 17,
+                        "endColumn": 12,
+                        "endOffset": 665
+                    }
+                }
+            }
+        ]
+    }
+]

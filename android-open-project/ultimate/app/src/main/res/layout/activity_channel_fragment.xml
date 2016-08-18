@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/theme_bg"
+    tools:context="com.looper.ultimate.view.activity.ChannelFragmentActivity">
+
+    <LinearLayout
+        android:layout_width="@dimen/d180"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:background="@drawable/channel_bg_left"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/btn_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:focusable="true"
+            android:clickable="true"
+            android:paddingLeft="@dimen/d45"
+            android:paddingRight="@dimen/d45"
+            android:textSize="@dimen/s18"
+            android:textColor="@drawable/text_color_selector"
+            android:drawableLeft="@drawable/icon_search"
+            android:text="@string/search"
+            android:background="@drawable/btn_search"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/channel_category_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:scrollbars="none" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/d15">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d85"
+            android:paddingTop="@dimen/d20"
+            android:paddingBottom="@dimen/d10"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="@dimen/d0"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"/>
+            <TextView
+                android:id="@+id/tv_icon"
+                android:layout_width="@dimen/d0"
+                android:layout_height="@dimen/d50"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/s36"
+                android:drawableLeft="@drawable/icon_healthy_life"
+                android:drawablePadding="@dimen/d10"
+                android:text="@string/healthy_life"
+                android:textColor="@color/item_title_color"/>
+            <View
+                android:layout_width="@dimen/d0"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"/>
+        </LinearLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>

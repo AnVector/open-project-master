@@ -1,0 +1,21 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.looper.ultimate.view.fragment.ChannelFragment">
+    <com.open.androidtvwidget.recycle.RecyclerViewTV
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="false"
+        android:padding="@dimen/d15"
+        android:clipToPadding="false"
+        android:clipChildren="false">
+
+    </com.open.androidtvwidget.recycle.RecyclerViewTV>
+
+    <com.open.androidtvwidget.view.MainUpView
+        android:id="@+id/mainUpView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</FrameLayout>

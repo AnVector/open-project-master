@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:focusable="true"
+              android:clickable="true"
+              android:clipChildren="false"
+              android:clipToPadding="false"
+              android:padding="@dimen/d12"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/scale_zone"
+        android:padding="@dimen/d3"
+        android:layout_width="@dimen/d511"
+        android:layout_height="@dimen/d286"
+        android:scaleType="fitXY"
+        android:src="@drawable/default7"/>
+</LinearLayout>

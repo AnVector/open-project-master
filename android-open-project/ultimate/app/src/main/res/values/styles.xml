@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="navigation_bar_style" >
+        <item name="android:paddingTop">@dimen/d15</item>
+        <item name="android:button">@null</item>
+        <item name="android:layout_width">@dimen/d0</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="guid_dot_style" >
+        <item name="android:layout_width">@dimen/d0</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_weight">1</item>
+    <item name="android:button">@drawable/dot_indicator</item>
+    </style>
+
+</resources>

@@ -1,0 +1,3 @@
+include ':app', ':AndroidTvWidget', ':greendao'
+include':libraries:LemonHttpLibrary'
+project(':AndroidTvWidget').projectDir = new File('libraries/AndroidTVWidget/AndroidTvWidget')

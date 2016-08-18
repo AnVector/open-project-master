@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false">
+
+    <RelativeLayout
+        android:id="@+id/top_rl"
+        android:layout_width="@dimen/d280"
+        android:layout_height="@dimen/d414"
+        android:padding="@dimen/d5"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/top_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/default6"/>
+
+        <TextView
+            android:id="@+id/top_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d50"
+            android:layout_alignBottom="@id/top_img"
+            android:layout_alignLeft="@id/top_img"
+            android:background="@drawable/home_item_title_bg"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/s20"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="@dimen/d280"
+        android:layout_height="@dimen/d154"
+        android:layout_alignLeft="@id/top_rl"
+        android:layout_below="@id/top_rl"
+        android:padding="@dimen/d5"
+        android:clickable="true"
+        android:focusable="true">
+        <ImageView
+            android:id="@+id/bottom_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/default5"/>
+
+        <TextView
+            android:id="@+id/bottom_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d50"
+            android:layout_alignBottom="@id/bottom_img"
+            android:layout_alignLeft="@id/bottom_img"
+            android:background="@drawable/home_item_title_bg"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/s20"/>
+    </RelativeLayout>
+
+</RelativeLayout>

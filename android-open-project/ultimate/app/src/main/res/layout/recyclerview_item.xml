@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="@dimen/d268"
+              android:layout_height="wrap_content"
+              android:clipChildren="false"
+              android:clipToPadding="false"
+              android:focusable="true"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/d11"
+              android:paddingLeft="@dimen/d12"
+              android:paddingRight="@dimen/d12"
+              android:paddingTop="@dimen/d15">
+
+    <RelativeLayout
+        android:id="@+id/scale_zone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/d3">
+
+        <ImageView
+            android:id="@+id/item_logo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d132"
+            android:scaleType="fitXY"/>
+        <ImageView
+            android:layout_width="@dimen/d44"
+            android:layout_height="@dimen/d24"
+            android:src="@drawable/icon_vip"
+            android:layout_alignTop="@id/item_logo"
+            android:layout_alignRight="@id/item_logo"/>
+        <LinearLayout
+            android:id="@+id/study_count_ll"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d34"
+            android:layout_alignBottom="@id/item_logo"
+            android:layout_alignLeft="@id/item_logo"
+            android:gravity="right|bottom"
+            android:orientation="horizontal"
+            android:background="@drawable/img_mask"
+            android:visibility="invisible">
+            <ImageView
+                android:layout_width="@dimen/d19"
+                android:layout_height="@dimen/d24"
+                android:src="@drawable/icon_number"
+                android:paddingBottom="@dimen/d5"/>
+            <TextView
+                android:id="@+id/item_study_count"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:paddingRight="@dimen/d10"
+                android:paddingLeft="@dimen/d3"
+                android:gravity="bottom"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="@dimen/s22"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d15"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:textColor="@color/item_title_color"
+        android:textSize="@dimen/s22"/>
+
+</LinearLayout>

@@ -1,0 +1,238 @@
+package com.looper.ultimate.util;
+
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Toast;
+
+import com.looper.ultimate.common.UltimateApplication;
+/**
+ * Created by zhangshixin on 2015/11/26.
+ * Blog : http://blog.csdn.net/u011240877
+ *
+ * @description Codes there always can be better.
+ */
+public class UIUtils {
+//    public static UltimateApplication getApplication() {
+//        return new UltimateApplication();
+//    }
+
+    public static Thread getMainThread() {
+        return UltimateApplication.getMainThread();
+    }
+
+    public static long getMainThreadId() {
+        return UltimateApplication.getMainThreadId();
+    }
+
+    public static Toast toast;
+
+    public static final boolean isEmail(String value) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(value).matches();
+    }
+
+    public static String getVersion(Context context)// 获取版本号
+    {
+        PackageInfo pi = null;
+        try {
+            pi = context.getPackageManager().getPackageInfo(
+                    context.getPackageName(), 0);
+
+        } catch (PackageManager.NameNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return pi.versionName;
+    }
+
+    /**
+     * dip转换px
+     */
+    public static int dip2px(Context context, int dip) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dip * scale + 0.5f);
+    }
+
+    /**
+     * pxz转换dip
+     */
+    public static int px2dip(Context context, int px) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (px / scale + 0.5f);
+    }
+
+
+    /**
+     * 获取主线程的handler
+     */
+    public static Handler getHandler() {
+        return UltimateApplication.getMainThreadHandler();
+    }
+
+    /**
+     * 延时在主线程执行runnable
+     */
+    public static boolean postDelayed(Runnable runnable, long delayMillis) {
+        return getHandler().postDelayed(runnable, delayMillis);
+    }
+
+    /**
+     * 在主线程执行runnable
+     */
+    public static boolean post(Runnable runnable) {
+        return getHandler().post(runnable);
+    }
+
+    /**
+     * 从主线程looper里面移除runnable
+     */
+    public static void removeCallbacks(Runnable runnable) {
+        getHandler().removeCallbacks(runnable);
+    }
+
+    public static View inflate(Context context, int resId) {
+        return LayoutInflater.from(context).inflate(resId, null);
+    }
+
+    /**
+     * 获取资源
+     */
+    public static Resources getResources(Context context) {
+        return context.getResources();
+    }
+
+    /**
+     * 获取文字
+     */
+    public static String getString(Context context, int resId) {
+        return getResources(context).getString(resId);
+    }
+
+    /**
+     * 获取文字数组
+     */
+    public static String[] getStringArray(Context context, int resId) {
+        return getResources(context).getStringArray(resId);
+    }
+
+    /**
+     * 获取dimen
+     */
+    public static int getDimens(Context context, int resId) {
+        return getResources(context).getDimensionPixelSize(resId);
+    }
+
+    /**
+     * 获取drawable
+     */
+    public static Drawable getDrawable(Context context, int resId) {
+        return getResources(context).getDrawable(resId);
+    }
+
+    /**
+     * 获取颜色
+     */
+    public static int getColor(Context context, int resId) {
+        return getResources(context).getColor(resId);
+    }
+
+    /**
+     * 获取颜色选择器
+     */
+    public static ColorStateList getColorStateList(Context context, int resId) {
+        return getResources(context).getColorStateList(resId);
+    }
+
+    //判断当前的线程是不是在主线程
+    public static boolean isRunInMainThread() {
+        return android.os.Process.myTid() == getMainThreadId();
+    }
+
+    public static void runInMainThread(Runnable runnable) {
+        if (isRunInMainThread()) {
+            runnable.run();
+        } else {
+            post(runnable);
+        }
+    }
+
+
+    /**
+     * 对toast的简易封装。线程安全，可以在非UI线程调用。
+     */
+    public static void showToastSafe(Context context, final int resId) {
+        showToastSafe(context, getString(context, resId));
+    }
+
+    /**
+     * 对toast的简易封装。线程安全，可以在非UI线程调用。
+     */
+    public static void showToastSafe(final Context context, final String str) {
+        if (isRunInMainThread()) {
+            showToast(context, str);
+        } else {
+            post(new Runnable() {
+                @Override
+                public void run() {
+                    showToast(context, str);
+                }
+            });
+        }
+    }
+
+    private static void showToast(Context context, String str) {
+        if (toast == null) {
+            toast = Toast.makeText(context, str, Toast.LENGTH_SHORT);
+        } else {
+            toast.setText(str);
+            toast.setDuration(Toast.LENGTH_SHORT);
+        }
+        toast.show();
+    }
+
+
+//    /**
+//     * 高斯模糊
+//     *
+//     * @param ctx
+//     * @param view
+//     * @param textView
+//     */
+//    public static void ninePatchDrawable(final Context ctx, final ImageView view, final TextView textView) {
+//        Drawable drawable = view.getDrawable();
+//        if (drawable instanceof BitmapDrawable) {
+//            synchronized (UIUtils.class) {
+//
+//                view.setImageBitmap(Blur.apply(ctx, ((BitmapDrawable) view.getDrawable()).getBitmap()));
+//            }
+//
+//
+//        } else if (drawable instanceof NinePatchDrawable) {
+//            Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+//            Canvas canvas = new Canvas(bitmap);
+//            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+//            drawable.draw(canvas);
+//            view.setImageBitmap(Blur.apply(ctx, bitmap));
+//        }
+//        view.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+//
+//            @Override
+//            public boolean onPreDraw() {
+//                view.getViewTreeObserver().removeOnPreDrawListener(this);
+//                view.buildDrawingCache();
+//                Bitmap bmp = view.getDrawingCache();
+//                ViewUtils.blur(ctx, bmp, textView);
+//                return true;
+//            }
+//        });
+//
+//    }
+}
+
+
