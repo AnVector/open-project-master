@@ -34,7 +34,7 @@ public abstract class BaseFragment extends Fragment {
     protected abstract int getContentViewId();
 
     protected void init(){
-            ButterKnife.bind(this,mRootView);
+        ButterKnife.bind(this,mRootView);
         initData();
         initEvent();
     }

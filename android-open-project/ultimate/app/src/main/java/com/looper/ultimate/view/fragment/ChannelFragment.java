@@ -15,6 +15,7 @@ import com.looper.ultimate.common.InterfaceType;
 import com.looper.ultimate.presenter.FragmentPresenter;
 import com.looper.ultimate.presenter.PresenterHolder;
 import com.looper.ultimate.util.GsonUtils;
+import com.looper.ultimate.util.LogUtils;
 import com.looper.ultimate.view.ViewImpl;
 import com.looper.ultimate.view.adapter.DetailInfoAdapter;
 import com.looper.ultimate.view.adapter.HeaderAndFooterRecyclerViewAdapter;
@@ -62,7 +63,6 @@ public class ChannelFragment extends BaseFragment implements ViewImpl {
     public ChannelFragment() {
         // Required empty public constructor
     }
-
     @Override
     protected void initData() {
         mMainUpView1.setEffectBridge(new EffectBridge());
@@ -78,8 +78,6 @@ public class ChannelFragment extends BaseFragment implements ViewImpl {
 
         mPresenter = PresenterHolder.getInstance().createPresenter(this);
         getCatalogInfo();
-        getContentListByCatalog();
-
     }
 
     private void getContentListByCatalog() {
@@ -145,9 +143,11 @@ public class ChannelFragment extends BaseFragment implements ViewImpl {
         }
 
         if(type == InterfaceType.getCatalogInfo ){
+            LogUtils.d("fragmentTransaction","142213425");
             CatalogInfoBean bean = GsonUtils.getBeanFromJson(result, CatalogInfoBean.class);
             mCatalogInfoBeans = bean.getCatalogInfo().getChildren();
             mRecyclerViewAdapter.addHeader(0, mCatalogInfoBeans.size(), mCatalogInfoBeans);
+            getContentListByCatalog();
         }
     }
 

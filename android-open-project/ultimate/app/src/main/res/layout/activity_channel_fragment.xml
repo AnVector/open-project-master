@@ -25,13 +25,13 @@
             android:gravity="center"
             android:focusable="true"
             android:clickable="true"
-            android:paddingLeft="@dimen/d45"
-            android:paddingRight="@dimen/d45"
+            android:paddingLeft="@dimen/d55"
+            android:paddingRight="@dimen/d52"
             android:textSize="@dimen/s18"
-            android:textColor="@drawable/text_color_selector"
+            android:textColor="@color/white"
             android:drawableLeft="@drawable/icon_search"
             android:text="@string/search"
-            android:background="@drawable/btn_search"/>
+            android:background="@drawable/search_btn_bg_selector"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/channel_category_rv"
             android:layout_width="match_parent"
@@ -77,10 +77,10 @@
                 android:layout_weight="2"/>
         </LinearLayout>
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/view_pager"
-            android:layout_gravity="center_horizontal"
+        <FrameLayout
+            android:id="@+id/id_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"></FrameLayout>
     </LinearLayout>
 </LinearLayout>

@@ -54,7 +54,6 @@
                 android:gravity="bottom"
                 android:singleLine="true"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textSize="@dimen/s22"/>
         </LinearLayout>
 

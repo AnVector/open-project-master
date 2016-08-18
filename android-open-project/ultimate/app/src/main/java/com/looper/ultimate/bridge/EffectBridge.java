@@ -1,7 +1,6 @@
 package com.looper.ultimate.bridge;
 
 import android.graphics.Color;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -65,9 +64,6 @@ public class EffectBridge extends RecyclerViewBridge {
     private void setTextMarquee(TextView textView,boolean isSelected){
         if(textView!=null){
             textView.setSelected(isSelected);
-            if(!isSelected){
-                textView.setEllipsize(TextUtils.TruncateAt.END);
-            }
         }
     }
 }
