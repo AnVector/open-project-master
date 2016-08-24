@@ -79,9 +79,9 @@ public class ChannelActivity extends BaseActivity implements ViewImpl {
     }
 
     protected void initData() {
-        mMainUpView1.setEffectBridge(new EffectBridge());
-        mRecyclerViewBridge = (EffectBridge) mMainUpView1.getEffectBridge();
-        mRecyclerViewBridge.setUpRectResource(R.drawable.rectangle);
+//        mMainUpView1.setEffectBridge(new EffectBridge());
+//        mRecyclerViewBridge = (EffectBridge) mMainUpView1.getEffectBridge();
+//        mRecyclerViewBridge.setUpRectResource(R.drawable.rectangle);
         //adapter 无数据源
         mRecyclerViewAdapter = new DetailInfoAdapter(this, R.layout.recyclerview_item, R.layout.recyclerview_header_item, R.layout.recyclerview_footer_item);
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
@@ -105,7 +105,7 @@ public class ChannelActivity extends BaseActivity implements ViewImpl {
             @Override
             public void onChildSelected(RecyclerView parent, View focusview, int position, int dy) {
                 focusview.bringToFront();
-                mRecyclerViewBridge.setFocusView(focusview, oldView, 1.05f, R.id.scale_zone, R.id.item_title, R.id.item_study_count);
+//                mRecyclerViewBridge.setFocusView(focusview, oldView, 1.05f, R.id.scale_zone, R.id.item_title, R.id.item_study_count);
                 oldView = focusview;
                 if (position > mContentInfoBeans.size() - 5 && !finished) {
                     getContentListByCatalog();
@@ -125,7 +125,7 @@ public class ChannelActivity extends BaseActivity implements ViewImpl {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        mPresenter.fetchData(json, page, InterfaceType.getContentListByCatalog);
+        mPresenter.VolleyRequestWithAuth(json, "askfj",page, InterfaceType.getContentListByCatalog);
     }
 
     private void fetchCatalogInfo(){

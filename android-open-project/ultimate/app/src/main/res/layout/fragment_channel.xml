@@ -1,21 +1,30 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.looper.ultimate.view.fragment.ChannelFragment">
-    <com.open.androidtvwidget.recycle.RecyclerViewTV
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.looper.ultimate.view.fragment.ChannelFragment">
+
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:focusable="false"
-        android:padding="@dimen/d15"
+        android:clipChildren="false"
         android:clipToPadding="false"
-        android:clipChildren="false">
+        android:focusable="false"
+        android:padding="@dimen/d15">
+    </android.support.v7.widget.RecyclerView>
 
-    </com.open.androidtvwidget.recycle.RecyclerViewTV>
-
-    <com.open.androidtvwidget.view.MainUpView
-        android:id="@+id/mainUpView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-</FrameLayout>
+    <com.looper.ultimate.view.widget.VerticalSeekBar
+        android:id="@+id/vertical_seekbar"
+        android:layout_width="@dimen/d8"
+        android:layout_height="@dimen/d435"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/d8"
+        android:focusable="false"
+        android:max="100"
+        android:progress="100"
+        android:progressDrawable="@drawable/seekbar_style"
+        android:thumb="@drawable/channel_seekbar_thumb"
+        android:thumbOffset="@dimen/d0"
+        android:visibility="visible"/>
+</RelativeLayout>

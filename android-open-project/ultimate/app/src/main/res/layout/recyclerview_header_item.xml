@@ -5,7 +5,7 @@
               android:clickable="true"
               android:clipChildren="false"
               android:clipToPadding="false"
-              android:padding="@dimen/d12"
+              android:padding="@dimen/d4"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content">
     <ImageView

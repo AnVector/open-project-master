@@ -97,7 +97,6 @@ dependencies {
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     //网络请求
-    compile project(':libraries:LemonHttpLibrary')
     //android TV library
     compile project(':AndroidTvWidget')
     //Volley 异步网络请求框架
@@ -111,7 +110,6 @@ dependencies {
     //Retrofit
     //greendao
     //material design
-    compile 'org.apache.httpcomponents:httpcore:4.4.2'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:multidex:1.0.0'
     compile 'com.umeng.analytics:analytics:latest.integration'
@@ -124,4 +122,5 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
     compile 'com.android.support:support-v4:23.3.0'
+    compile 'com.google.code.gson:gson:2.7'
 }

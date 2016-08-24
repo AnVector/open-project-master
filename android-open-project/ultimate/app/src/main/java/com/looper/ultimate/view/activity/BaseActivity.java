@@ -34,6 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void init() {
         setContentView(getContentViewId());
+        getWindow().setBackgroundDrawable(null);//去除默认背景
         ButterKnife.bind(this);
         UActivityManager.getInstance().addActivity(this);
         getExtraParams();

@@ -326,6 +326,7 @@
     <dimen name="d380">380.0dip</dimen>
     <dimen name="d404">303.0dip</dimen>
     <dimen name="d414">310.5dip</dimen>
+    <dimen name="d435">401.25dip</dimen>
     <dimen name="d505">378.75dip</dimen>
     <dimen name="d511">383.25dip</dimen>
     <dimen name="d615">461.25dip</dimen>

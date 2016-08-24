@@ -1,10 +1,16 @@
 package com.looper.ultimate.view.fragment;
 
 
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.looper.ultimate.R;
 import com.looper.ultimate.bean.CatalogInfoBean;
@@ -15,15 +21,13 @@ import com.looper.ultimate.common.InterfaceType;
 import com.looper.ultimate.presenter.FragmentPresenter;
 import com.looper.ultimate.presenter.PresenterHolder;
 import com.looper.ultimate.util.GsonUtils;
-import com.looper.ultimate.util.LogUtils;
 import com.looper.ultimate.view.ViewImpl;
 import com.looper.ultimate.view.adapter.DetailInfoAdapter;
 import com.looper.ultimate.view.adapter.HeaderAndFooterRecyclerViewAdapter;
 import com.looper.ultimate.view.adapter.HeaderSpanSizeLookup;
+import com.looper.ultimate.view.adapter.OnItemFocusChangeListener;
+import com.looper.ultimate.view.widget.VerticalSeekBar;
 import com.open.androidtvwidget.recycle.GridLayoutManagerTV;
-import com.open.androidtvwidget.recycle.OnChildSelectedListener;
-import com.open.androidtvwidget.recycle.RecyclerViewTV;
-import com.open.androidtvwidget.view.MainUpView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,57 +44,102 @@ public class ChannelFragment extends BaseFragment implements ViewImpl {
 
 
     @BindView(R.id.recyclerView)
-    RecyclerViewTV mRecyclerView;
-    @BindView(R.id.mainUpView1)
-    MainUpView mMainUpView1;
+    RecyclerView mRecyclerView;
+    @BindView(R.id.vertical_seekbar)
+    VerticalSeekBar mVerticalSeekbar;
 
+    //Presenter
     private FragmentPresenter mPresenter;
+    //Effect Bridge
     private EffectBridge mRecyclerViewBridge;
-    private GridLayoutManagerTV gridlayoutManager;
+    private GridLayoutManagerTV mGridLayoutManagerTV;
+    private GridLayoutManager mGridLayoutManager;
+    //RecyclerViewAdapter
     private DetailInfoAdapter mRecyclerViewAdapter;
     private View oldView;
     //data
     private boolean finished = false;
     private List<ContentInfoBean> mContentInfoBeans = new ArrayList<>();
-    private List<CatalogInfoBean.CatalogInfo> mCatalogInfoBeans;
+    private List<CatalogInfoBean.CatalogInfo> mCatalogInfoBeans = new ArrayList<>();
     //数据分页加载
     private int page = 0;
     private int start = 1;
     private static final int COUNT = 24;
     //footer data
     private List<String> mFooterList = new ArrayList<>();
+    //Fragment params
+    private int index = 0;
+    private String catalogId;
+    public static final String INDEX = "index";
+    public static final String CATALOG_ID = "catalog_id";
+    //Item Total Count
+    private int itemTotalCount;
+    //RecyclerView focused child position
+    private int position = 0;
+
+    //Fragment callback
+    private FragmentListener mFragmentListener;
+
+
+    public interface FragmentListener{
+        void onItemSelected(boolean left, boolean right,boolean top, boolean bottom);
+    }
 
     public ChannelFragment() {
         // Required empty public constructor
     }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.mFragmentListener = (FragmentListener) getActivity();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            index = bundle.getInt(INDEX);
+            catalogId = bundle.getString(CATALOG_ID);
+        }
+    }
+
     @Override
     protected void initData() {
-        mMainUpView1.setEffectBridge(new EffectBridge());
-        mRecyclerViewBridge = (EffectBridge) mMainUpView1.getEffectBridge();
-//        mRecyclerViewBridge.setUpRectResource(R.drawable.rectangle);
-        //adapter 无数据源
+        mRecyclerViewBridge = new EffectBridge(R.id.scale_zone, R.id.study_count_ll, R.id.item_title,1.035f);
         mRecyclerViewAdapter = new DetailInfoAdapter(getContext(), R.layout.recyclerview_item, R.layout.recyclerview_header_item, R.layout.recyclerview_footer_item);
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
-        gridlayoutManager = new GridLayoutManagerTV(getContext(), 4);
-        gridlayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        gridlayoutManager.setSpanSizeLookup(new HeaderSpanSizeLookup((HeaderAndFooterRecyclerViewAdapter) mRecyclerView.getAdapter(), gridlayoutManager.getSpanCount()));
-        mRecyclerView.setLayoutManager(gridlayoutManager);
+//        mGridLayoutManager = new GridLayoutManager(getContext(),4);
+//        mGridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+//        mGridLayoutManager.setSpanSizeLookup(new HeaderSpanSizeLookup((HeaderAndFooterRecyclerViewAdapter) mRecyclerView.getAdapter(), mGridLayoutManager.getSpanCount()));
+//        mRecyclerView.setLayoutManager(mGridLayoutManager);
+        mGridLayoutManagerTV = new GridLayoutManagerTV(getContext(),4);
+        mGridLayoutManagerTV.setOrientation(LinearLayoutManager.VERTICAL);
+        mGridLayoutManagerTV.setSpanSizeLookup(new HeaderSpanSizeLookup((HeaderAndFooterRecyclerViewAdapter) mRecyclerView.getAdapter(), mGridLayoutManagerTV.getSpanCount()));
+        mRecyclerView.setLayoutManager(mGridLayoutManagerTV);
+        mRecyclerView.setHasFixedSize(true);
 
         mPresenter = PresenterHolder.getInstance().createPresenter(this);
-        getCatalogInfo();
+        if (index == 0) {
+            mVerticalSeekbar.setVisibility(View.GONE);
+            getCatalogInfo();
+        } else {
+            getContentListByCatalog();
+        }
     }
 
     private void getContentListByCatalog() {
         JSONObject json = new JSONObject();
         try {
-            json.put("catalogId", "560139");
+            json.put("catalogId", catalogId);
             json.put("channelCode", "");
             json.put("start", start);
             json.put("count", COUNT);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        mPresenter.fetchData(json, page, InterfaceType.getContentListByCatalog);
+        mPresenter.VolleyRequestWithAuth(json,"contentList",page,InterfaceType.getContentListByCatalog);
     }
 
     private void getCatalogInfo() {
@@ -108,17 +157,56 @@ public class ChannelFragment extends BaseFragment implements ViewImpl {
 
     @Override
     protected void initEvent() {
-        gridlayoutManager.setOnChildSelectedListener(new OnChildSelectedListener() {
+        mRecyclerViewAdapter.setOnItemFocusChangeListener(new OnItemFocusChangeListener() {
             @Override
-            public void onChildSelected(RecyclerView parent, View focusview, int position, int dy) {
-                focusview.bringToFront();
-                mRecyclerViewBridge.setFocusView(focusview, oldView, 1.05f, R.id.scale_zone,R.id.study_count_ll,R.id.item_title);
-                oldView = focusview;
-                if (position > mContentInfoBeans.size() - 5 && !finished) {
-                    getContentListByCatalog();
+            public void onItemFocusChanged(ViewGroup parent, View view, Object o, int position, boolean hasFocus) {
+                setAnimation(view,hasFocus);
+                if (hasFocus) {
+                    setProgress(position);
+                    fetchMoreData(position);
+                    callBack(position);
+                }else{
+
                 }
             }
         });
+
+
+    }
+
+    private void callBack(int position){
+        boolean left = isLeft(position,4);
+        boolean right = isRight(position,4);
+        boolean top = isTop(position,4);
+        boolean bottom = isBottom(position,4);
+        if(mFragmentListener!=null){
+            mFragmentListener.onItemSelected(left,right,top,bottom);
+        }
+    }
+
+    private void fetchMoreData(int position){
+        this.position = position;
+        if (position > mContentInfoBeans.size() - 5 && !finished) {
+            getContentListByCatalog();
+        }
+    }
+
+    private void setAnimation(View view,boolean hasFocus){
+        mRecyclerViewBridge.setViewAnimation(view,hasFocus);
+        oldView = view;
+    }
+
+    private void setProgress(int position){
+        int divResult = itemTotalCount / 4;
+        int modResult = itemTotalCount % 4;
+        int idivResult = position / 4;
+        if (modResult == 0) {
+            mVerticalSeekbar.setMax(divResult - 1);
+            mVerticalSeekbar.setThumb(divResult - idivResult - 1);
+        } else {
+            mVerticalSeekbar.setMax(divResult);
+            mVerticalSeekbar.setThumb(divResult - idivResult);
+        }
     }
 
     @Override
@@ -132,20 +220,24 @@ public class ChannelFragment extends BaseFragment implements ViewImpl {
             ContentListBean bean = GsonUtils.getBeanFromJson(result, ContentListBean.class);
             mContentInfoBeans.addAll(bean.getContentList());
             mRecyclerViewAdapter.addItem(start, bean.getContentList().size(), mContentInfoBeans);
-            if (mContentInfoBeans.size() == Integer.parseInt(bean.getTotalCount())) {
+
+            itemTotalCount = Integer.parseInt(bean.getTotalCount());
+            if (mContentInfoBeans.size() == itemTotalCount) {
                 finished = true;
-                mFooterList.add("-----end-----");
-                mRecyclerViewAdapter.addFooter(0, mFooterList.size(), mFooterList);
+//                mFooterList.add("-----end-----");
+//                mRecyclerViewAdapter.addFooter(0, mFooterList.size(), mFooterList);
             } else {
                 ++this.page;
                 start += COUNT;
             }
         }
 
-        if(type == InterfaceType.getCatalogInfo ){
-            LogUtils.d("fragmentTransaction","142213425");
+        if (type == InterfaceType.getCatalogInfo) {
             CatalogInfoBean bean = GsonUtils.getBeanFromJson(result, CatalogInfoBean.class);
-            mCatalogInfoBeans = bean.getCatalogInfo().getChildren();
+            if(mCatalogInfoBeans.isEmpty()){
+                mCatalogInfoBeans.add(bean.getCatalogInfo().getChildren().get(0));
+                mCatalogInfoBeans.add(bean.getCatalogInfo().getChildren().get(1));
+            }
             mRecyclerViewAdapter.addHeader(0, mCatalogInfoBeans.size(), mCatalogInfoBeans);
             getContentListByCatalog();
         }
@@ -160,5 +252,50 @@ public class ChannelFragment extends BaseFragment implements ViewImpl {
     public void onDestroy() {
         super.onDestroy();
         PresenterHolder.getInstance().remove(this);
+    }
+
+    public void handleOnKeyDown(int keyCode, KeyEvent event){
+        if(keyCode==KeyEvent.KEYCODE_DPAD_RIGHT){
+            if(mRecyclerView!=null&&mRecyclerView.getChildAt(position)!=null){
+                mRecyclerView.getChildAt(position).requestFocus();
+            }
+        }
+
+        if(keyCode == KeyEvent.KEYCODE_DPAD_LEFT){
+            mRecyclerViewBridge.setViewAnimation(oldView,false);
+            oldView = null;
+        }
+    }
+
+    private boolean isLeft(int position, int columnCount) {
+
+        if (position % columnCount == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isRight(int position, int columnCount) {
+        if ((position + 1) % columnCount == 0||(position==itemTotalCount-1)) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isTop(int position, int columnCount) {
+        if (position < columnCount && position > -1) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isBottom(int position, int columnCount) {
+        int mod = ((itemTotalCount % columnCount == 0) ? columnCount
+                : itemTotalCount % columnCount);
+        boolean atBottom = ((position >= itemTotalCount - mod) ? true : false);
+        if (itemTotalCount != -1 && atBottom) {
+            return true;
+        }
+        return false;
     }
 }

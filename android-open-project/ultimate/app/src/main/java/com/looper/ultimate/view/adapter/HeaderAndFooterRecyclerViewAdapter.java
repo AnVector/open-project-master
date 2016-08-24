@@ -153,17 +153,15 @@ public abstract class HeaderAndFooterRecyclerViewAdapter<T, V, K> extends Recycl
     }
 
     @Override
-    protected void setOnListener(final ViewGroup parent, ViewHolder viewHolder, final int viewType) {
+    protected void setOnListener(final ViewGroup parent, final ViewHolder viewHolder, final int viewType) {
 
-        final int position = getPosition(viewHolder);
-        final int itemViewType = viewType;
         if (isClickEnabled(viewType)) {
-
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mOnItemClickListener != null) {
-                        if (itemViewType == TYPE_HEADER) {
+                        final int position = getPosition(viewHolder);
+                        if (viewType == TYPE_HEADER) {
                             mOnItemClickListener.onItemClick(parent, v, mHeaderDatas.get(position), position);
                         } else {
                             mOnItemClickListener.onItemClick(parent, v, mDatas.get(position - getHeaderItemCount()), position);
@@ -177,6 +175,7 @@ public abstract class HeaderAndFooterRecyclerViewAdapter<T, V, K> extends Recycl
                 @Override
                 public boolean onLongClick(View v) {
                     if (mOnItemClickListener != null) {
+                        final int position = getPosition(viewHolder);
                         if (viewType == TYPE_HEADER) {
                             mOnItemClickListener.onItemLongClick(parent, v, mHeaderDatas.get(position), position);
                         } else {
@@ -194,6 +193,7 @@ public abstract class HeaderAndFooterRecyclerViewAdapter<T, V, K> extends Recycl
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (mOnItemFocusChangeListener != null) {
+                        final int position = getPosition(viewHolder);
                         if (viewType == TYPE_HEADER) {
                             mOnItemFocusChangeListener.onItemFocusChanged(parent, v, mHeaderDatas.get(position), position, hasFocus);
                         } else {
@@ -297,9 +297,4 @@ public abstract class HeaderAndFooterRecyclerViewAdapter<T, V, K> extends Recycl
 
         return (mDatas == null ? 0 : mDatas.size());
     }
-
-
-//    public enum TYPE{
-//
-//    }
 }

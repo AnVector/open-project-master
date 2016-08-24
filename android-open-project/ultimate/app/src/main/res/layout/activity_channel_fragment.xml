@@ -9,6 +9,7 @@
     tools:context="com.looper.ultimate.view.activity.ChannelFragmentActivity">
 
     <LinearLayout
+        android:id="@+id/left_ll"
         android:layout_width="@dimen/d180"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -21,12 +22,14 @@
             android:id="@+id/btn_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d10"
+            android:layout_marginRight="@dimen/d10"
             android:layout_gravity="center"
             android:gravity="center"
             android:focusable="true"
             android:clickable="true"
-            android:paddingLeft="@dimen/d55"
-            android:paddingRight="@dimen/d52"
+            android:paddingLeft="@dimen/d45"
+            android:paddingRight="@dimen/d42"
             android:textSize="@dimen/s18"
             android:textColor="@color/white"
             android:drawableLeft="@drawable/icon_search"
@@ -77,10 +80,10 @@
                 android:layout_weight="2"/>
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/id_content"
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"></FrameLayout>
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </LinearLayout>

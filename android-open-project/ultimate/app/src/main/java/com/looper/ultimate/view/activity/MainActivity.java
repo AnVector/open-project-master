@@ -105,7 +105,7 @@ public class MainActivity extends BaseActivity implements ViewImpl {
         if (mPresenter == null) {
             mPresenter = PresenterHolder.getInstance().createPresenter(this);
         }
-        mPresenter.fetchData(getJsonParams(), page, InterfaceType.getCatalogInfo);
+        mPresenter.VolleyRequestWithAuth(getJsonParams(), "home",page, InterfaceType.getCatalogInfo);
         mPresenter.fetchDataByVolley(TNGOU, getTNJsonParams(), "get", 0,InterfaceType.TNGOU);
     }
 

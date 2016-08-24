@@ -5,46 +5,53 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.looper.ultimate.R;
-import com.open.androidtvwidget.bridge.RecyclerViewBridge;
+import com.nineoldandroids.view.ViewHelper;
 
 /**
  * Created by Administrator on 2016/7/27.
  */
-public class EffectBridge extends RecyclerViewBridge {
+public class EffectBridge{
 
+    private int scaleViewId;
+    private int visibleViewId;
+    private int textViewId;
+    private float scaleTimes = 1.0f;
 
-    public void setFocusView(View newView, View oldView, float scale, int childId, int layoutId,int id1) {
-        if (newView != null) {
-            View newChildView = newView.findViewById(childId);
-            View newLayoutView = newView.findViewById(layoutId);
-            if(newLayoutView!=null){
-                newLayoutView.setVisibility(View.VISIBLE);
-            }
-            TextView newTv1 = (TextView) newView.findViewById(id1);
-            if (newChildView != null) {
-                newChildView.setBackgroundResource(R.drawable.rectangle);
-                newView = newChildView;
-            }
-            set(newTv1);
-        }
-
-        if (oldView != null) {
-            View oldChildView = oldView.findViewById(childId);
-            View oldLayoutView = oldView.findViewById(layoutId);
-            if(oldLayoutView!=null){
-                oldLayoutView.setVisibility(View.INVISIBLE);
-            }
-            TextView oldTv1 = (TextView) oldView.findViewById(id1);
-            if (oldChildView != null) {
-                oldChildView.setBackgroundResource(0);
-                oldView = oldChildView;
-            }
-            reset(oldTv1);
-        }
-        setFocusView(newView, scale);
-        setUnFocusView(oldView);
+    public EffectBridge(int scaleViewId,int visibleViewId,int textViewId,float scaleTimes){
+        this.scaleViewId = scaleViewId;
+        this.visibleViewId = visibleViewId;
+        this.textViewId = textViewId;
+        this.scaleTimes = scaleTimes;
     }
 
+    public void setViewAnimation(View targetView,boolean hasFocus){
+
+        if(targetView!=null) {
+            if (targetView.findViewById(scaleViewId) == null ) {
+                return;
+            }
+            if (hasFocus) {
+                scaleAnimation(targetView.findViewById(scaleViewId),scaleTimes);
+                targetView.findViewById(scaleViewId).setBackgroundResource(R.drawable.rectangle);
+                if(targetView.findViewById(visibleViewId) != null){
+                    targetView.findViewById(visibleViewId).setVisibility(View.VISIBLE);
+                }
+                if(targetView.findViewById(textViewId) != null){
+                    set((TextView) targetView.findViewById(textViewId));
+                }
+
+            } else {
+                scaleAnimation(targetView.findViewById(scaleViewId),1.0f);
+                targetView.findViewById(scaleViewId).setBackgroundResource(0);
+                if( targetView.findViewById(visibleViewId) != null){
+                    targetView.findViewById(visibleViewId).setVisibility(View.GONE);
+                }
+                if(targetView.findViewById(textViewId) != null){
+                    reset((TextView) targetView.findViewById(textViewId));
+                }
+            }
+        }
+    }
     private void reset(TextView titleTv) {
         setTextColor(titleTv, Color.GRAY);
         setTextMarquee(titleTv,false);
@@ -64,6 +71,13 @@ public class EffectBridge extends RecyclerViewBridge {
     private void setTextMarquee(TextView textView,boolean isSelected){
         if(textView!=null){
             textView.setSelected(isSelected);
+        }
+    }
+
+    private void scaleAnimation(View view,float scale){
+        if(view!=null){
+            ViewHelper.setScaleX(view,scale);
+            ViewHelper.setScaleY(view,scale);
         }
     }
 }

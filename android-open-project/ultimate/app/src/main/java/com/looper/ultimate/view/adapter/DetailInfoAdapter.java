@@ -12,10 +12,6 @@ import com.looper.ultimate.common.AppConstant;
  */
 public class DetailInfoAdapter extends HeaderAndFooterRecyclerViewAdapter<ContentInfoBean, CatalogInfoBean.CatalogInfo, String> {
 
-    public DetailInfoAdapter(Context context, int layoutId, int headerLayoutId) {
-        super(context, layoutId, headerLayoutId);
-    }
-
     public DetailInfoAdapter(Context context, int layoutId, int headerLayoutId, int footerLayoutId) {
         super(context, layoutId, headerLayoutId, footerLayoutId);
     }
@@ -33,6 +29,9 @@ public class DetailInfoAdapter extends HeaderAndFooterRecyclerViewAdapter<Conten
 
     @Override
     public void convert(ViewHolder holder, ContentInfoBean contentInfoBean) {
+        if("1".equals(contentInfoBean.getChargeFlag())){
+            holder.setVisible(R.id.vip_flag,true);
+        }
         holder.setText(R.id.item_study_count,""+contentInfoBean.getContentExtInfo().getStudyCount());
         holder.setText(R.id.item_title, contentInfoBean.getContentName());
         holder.displayImage(R.id.item_logo, AppConstant.PREFIX_URL + contentInfoBean.getMiddleLogo(), R.drawable.default5, 6);
