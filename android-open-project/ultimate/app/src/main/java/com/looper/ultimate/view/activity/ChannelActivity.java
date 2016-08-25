@@ -11,6 +11,7 @@ import com.looper.ultimate.bean.ContentInfoBean;
 import com.looper.ultimate.bean.ContentListBean;
 import com.looper.ultimate.bridge.EffectBridge;
 import com.looper.ultimate.common.InterfaceType;
+import com.looper.ultimate.common.VolleyManager;
 import com.looper.ultimate.presenter.ActivityPresenter;
 import com.looper.ultimate.presenter.PresenterHolder;
 import com.looper.ultimate.util.GsonUtils;
@@ -125,7 +126,7 @@ public class ChannelActivity extends BaseActivity implements ViewImpl {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        mPresenter.VolleyRequestWithAuth(json, "askfj",page, InterfaceType.getContentListByCatalog);
+        mPresenter.VolleyRequestWithAuth(json, this,page, InterfaceType.getContentListByCatalog);
     }
 
     private void fetchCatalogInfo(){
@@ -135,7 +136,7 @@ public class ChannelActivity extends BaseActivity implements ViewImpl {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        mPresenter.VolleyRequestWithAuth(json, "subChannelInfo", -1, InterfaceType.getCatalogInfo);
+        mPresenter.VolleyRequestWithAuth(json, this, -1, InterfaceType.getCatalogInfo);
     }
 
     private void getCatalogInfo() {
@@ -148,7 +149,7 @@ public class ChannelActivity extends BaseActivity implements ViewImpl {
         //原始框架获取接口请求数据
 //       mPresenter.fetchData(json,1, InterfaceType.getCatalogInfo);
         //Volley异步请求框架获取接口数据
-        mPresenter.VolleyRequestWithAuth(json, "catalogInfo", 0, InterfaceType.getCatalogInfo);
+        mPresenter.VolleyRequestWithAuth(json, this, 0, InterfaceType.getCatalogInfo);
     }
 
     @Override
@@ -195,7 +196,6 @@ public class ChannelActivity extends BaseActivity implements ViewImpl {
     @Override
     protected void onStop() {
         super.onStop();
-//        VolleyManager.getInstance(this).cancelRequest("catalogInfo");
-//        VolleyManager.getInstance(this).cancelRequest("subChannelInfo");
+        VolleyManager.getInstance(this).cancelRequest(this);
     }
 }

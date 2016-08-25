@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/greendao" />
             <option value="$PROJECT_DIR$/libraries/AndroidTVWidget/AndroidTvWidget" />
+            <option value="$PROJECT_DIR$/libraries/okhttputils-master/okhttputils" />
           </set>
         </option>
         <option name="myModules">
@@ -20,6 +21,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/greendao" />
             <option value="$PROJECT_DIR$/libraries/AndroidTVWidget/AndroidTvWidget" />
+            <option value="$PROJECT_DIR$/libraries/okhttputils-master/okhttputils" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -6,10 +6,11 @@
               android:clipToPadding="false"
               android:focusable="true"
               android:orientation="vertical"
-              android:paddingLeft="@dimen/d5"
-              android:paddingRight="@dimen/d5"
               android:paddingBottom="@dimen/d11"
+              android:paddingLeft="@dimen/d7"
+              android:paddingRight="@dimen/d7"
               android:paddingTop="@dimen/d15">
+
     <RelativeLayout
         android:id="@+id/scale_zone"
         android:layout_width="@dimen/d244"
@@ -21,43 +22,31 @@
             android:layout_width="@dimen/d238"
             android:layout_height="@dimen/d132"
             android:scaleType="fitXY"/>
+
         <ImageView
             android:id="@+id/vip_flag"
             android:layout_width="@dimen/d44"
             android:layout_height="@dimen/d24"
-            android:src="@drawable/icon_vip"
-            android:layout_alignTop="@id/item_logo"
             android:layout_alignRight="@id/item_logo"
+            android:layout_alignTop="@id/item_logo"
+            android:src="@drawable/icon_vip"
             android:visibility="invisible"/>
-        <LinearLayout
-            android:id="@+id/study_count_ll"
+
+        <TextView
+            android:id="@+id/item_study_count"
             android:layout_width="@dimen/d238"
             android:layout_height="@dimen/d34"
             android:layout_alignBottom="@id/item_logo"
             android:layout_alignLeft="@id/item_logo"
-            android:gravity="right|bottom"
-            android:orientation="horizontal"
             android:background="@drawable/img_mask"
-            android:visibility="invisible">
-            <ImageView
-                android:layout_width="@dimen/d19"
-                android:layout_height="@dimen/d24"
-                android:src="@drawable/icon_number"
-                android:paddingBottom="@dimen/d5"/>
-            <TextView
-                android:id="@+id/item_study_count"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:ellipsize="marquee"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:paddingRight="@dimen/d10"
-                android:paddingLeft="@dimen/d3"
-                android:gravity="bottom"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textSize="@dimen/s22"/>
-        </LinearLayout>
-
+            android:drawableLeft="@drawable/icon_number"
+            android:drawablePadding="@dimen/d5"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/d145"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/s22"
+            android:visibility="invisible"/>
     </RelativeLayout>
 
     <TextView
@@ -70,5 +59,4 @@
         android:singleLine="true"
         android:textColor="@color/item_title_color"
         android:textSize="@dimen/s22"/>
-
 </LinearLayout>

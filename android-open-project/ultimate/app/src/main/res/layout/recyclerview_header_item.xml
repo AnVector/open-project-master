@@ -5,7 +5,7 @@
               android:clickable="true"
               android:clipChildren="false"
               android:clipToPadding="false"
-              android:padding="@dimen/d4"
+              android:padding="@dimen/d6"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content">
     <ImageView
@@ -13,6 +13,5 @@
         android:padding="@dimen/d3"
         android:layout_width="@dimen/d511"
         android:layout_height="@dimen/d286"
-        android:scaleType="fitXY"
-        android:src="@drawable/default7"/>
+        android:scaleType="fitXY"/>
 </LinearLayout>

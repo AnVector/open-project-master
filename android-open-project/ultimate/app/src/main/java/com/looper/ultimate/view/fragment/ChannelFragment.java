@@ -18,6 +18,7 @@ import com.looper.ultimate.bean.ContentInfoBean;
 import com.looper.ultimate.bean.ContentListBean;
 import com.looper.ultimate.bridge.EffectBridge;
 import com.looper.ultimate.common.InterfaceType;
+import com.looper.ultimate.common.VolleyManager;
 import com.looper.ultimate.presenter.FragmentPresenter;
 import com.looper.ultimate.presenter.PresenterHolder;
 import com.looper.ultimate.util.GsonUtils;
@@ -27,7 +28,6 @@ import com.looper.ultimate.view.adapter.HeaderAndFooterRecyclerViewAdapter;
 import com.looper.ultimate.view.adapter.HeaderSpanSizeLookup;
 import com.looper.ultimate.view.adapter.OnItemFocusChangeListener;
 import com.looper.ultimate.view.widget.VerticalSeekBar;
-import com.open.androidtvwidget.recycle.GridLayoutManagerTV;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,7 +52,6 @@ public class ChannelFragment extends BaseFragment implements ViewImpl {
     private FragmentPresenter mPresenter;
     //Effect Bridge
     private EffectBridge mRecyclerViewBridge;
-    private GridLayoutManagerTV mGridLayoutManagerTV;
     private GridLayoutManager mGridLayoutManager;
     //RecyclerViewAdapter
     private DetailInfoAdapter mRecyclerViewAdapter;
@@ -85,10 +84,6 @@ public class ChannelFragment extends BaseFragment implements ViewImpl {
         void onItemSelected(boolean left, boolean right,boolean top, boolean bottom);
     }
 
-    public ChannelFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -107,17 +102,13 @@ public class ChannelFragment extends BaseFragment implements ViewImpl {
 
     @Override
     protected void initData() {
-        mRecyclerViewBridge = new EffectBridge(R.id.scale_zone, R.id.study_count_ll, R.id.item_title,1.035f);
+        mRecyclerViewBridge = new EffectBridge(R.id.scale_zone, R.id.item_study_count, R.id.item_title,1.05f);
         mRecyclerViewAdapter = new DetailInfoAdapter(getContext(), R.layout.recyclerview_item, R.layout.recyclerview_header_item, R.layout.recyclerview_footer_item);
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
-//        mGridLayoutManager = new GridLayoutManager(getContext(),4);
-//        mGridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//        mGridLayoutManager.setSpanSizeLookup(new HeaderSpanSizeLookup((HeaderAndFooterRecyclerViewAdapter) mRecyclerView.getAdapter(), mGridLayoutManager.getSpanCount()));
-//        mRecyclerView.setLayoutManager(mGridLayoutManager);
-        mGridLayoutManagerTV = new GridLayoutManagerTV(getContext(),4);
-        mGridLayoutManagerTV.setOrientation(LinearLayoutManager.VERTICAL);
-        mGridLayoutManagerTV.setSpanSizeLookup(new HeaderSpanSizeLookup((HeaderAndFooterRecyclerViewAdapter) mRecyclerView.getAdapter(), mGridLayoutManagerTV.getSpanCount()));
-        mRecyclerView.setLayoutManager(mGridLayoutManagerTV);
+        mGridLayoutManager = new GridLayoutManager(getContext(),4);
+        mGridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mGridLayoutManager.setSpanSizeLookup(new HeaderSpanSizeLookup((HeaderAndFooterRecyclerViewAdapter) mRecyclerView.getAdapter(), mGridLayoutManager.getSpanCount()));
+        mRecyclerView.setLayoutManager(mGridLayoutManager);
         mRecyclerView.setHasFixedSize(true);
 
         mPresenter = PresenterHolder.getInstance().createPresenter(this);
@@ -139,7 +130,7 @@ public class ChannelFragment extends BaseFragment implements ViewImpl {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        mPresenter.VolleyRequestWithAuth(json,"contentList",page,InterfaceType.getContentListByCatalog);
+        mPresenter.VolleyRequestWithAuth(json,this,page,InterfaceType.getContentListByCatalog);
     }
 
     private void getCatalogInfo() {
@@ -152,7 +143,7 @@ public class ChannelFragment extends BaseFragment implements ViewImpl {
         //原始框架获取接口请求数据
 //       mPresenter.fetchData(json,1, InterfaceType.getCatalogInfo);
         //Volley异步请求框架获取接口数据
-        mPresenter.VolleyRequestWithAuth(json, "catalogInfo", 0, InterfaceType.getCatalogInfo);
+        mPresenter.VolleyRequestWithAuth(json, this, 0, InterfaceType.getCatalogInfo);
     }
 
     @Override
@@ -297,5 +288,12 @@ public class ChannelFragment extends BaseFragment implements ViewImpl {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        PresenterHolder.getInstance().remove(this);
+        VolleyManager.getInstance(getContext()).cancelRequest(this);
     }
 }

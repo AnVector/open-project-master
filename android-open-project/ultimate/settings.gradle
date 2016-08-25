@@ -1,2 +1,3 @@
-include ':app', ':AndroidTvWidget', ':greendao'
+include ':app', ':AndroidTvWidget', ':greendao', ':okhttputils'
 project(':AndroidTvWidget').projectDir = new File('libraries/AndroidTVWidget/AndroidTvWidget')
+project(':okhttputils').projectDir = new File('libraries/okhttputils-master/okhttputils')

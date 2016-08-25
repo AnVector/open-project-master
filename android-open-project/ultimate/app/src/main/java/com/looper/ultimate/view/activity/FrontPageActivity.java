@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.looper.ultimate.R;
 import com.looper.ultimate.bean.CatalogInfoBean;
 import com.looper.ultimate.common.InterfaceType;
+import com.looper.ultimate.common.VolleyManager;
 import com.looper.ultimate.presenter.ActivityPresenter;
 import com.looper.ultimate.presenter.PresenterHolder;
 import com.looper.ultimate.util.GsonUtils;
@@ -104,7 +105,9 @@ public class FrontPageActivity extends BaseActivity implements ViewImpl {
         //原始框架获取接口请求数据
 //       mPresenter.fetchData(json,1, InterfaceType.getCatalogInfo);
         //Volley异步请求框架获取接口数据
-        mPresenter.VolleyRequestWithAuth(json, "topicInfo", 0, InterfaceType.getCatalogInfo);
+//        mPresenter.VolleyRequestWithAuth(json, this, 0, InterfaceType.getCatalogInfo);
+        //OkHttp异步请求框架获取接口数据
+        mPresenter.OkHttpRequestWithAuth(json,this,0,InterfaceType.getCatalogInfo);
     }
 
     private void fetchCatalogInfo() {
@@ -115,7 +118,7 @@ public class FrontPageActivity extends BaseActivity implements ViewImpl {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        mPresenter.VolleyRequestWithAuth(json, "recommendInfo", 1, InterfaceType.getCatalogInfo);
+        mPresenter.VolleyRequestWithAuth(json, this, 1, InterfaceType.getCatalogInfo);
     }
 
     private void fetchChannelCatalogInfo() {
@@ -125,7 +128,7 @@ public class FrontPageActivity extends BaseActivity implements ViewImpl {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        mPresenter.VolleyRequestWithAuth(json, "channelCategoryInfo", 2, InterfaceType.getCatalogInfo);
+        mPresenter.VolleyRequestWithAuth(json, this, 2, InterfaceType.getCatalogInfo);
     }
 
     protected void initData() {
@@ -158,7 +161,7 @@ public class FrontPageActivity extends BaseActivity implements ViewImpl {
             public void onGlobalFocusChanged(View oldFocus, View newFocus) {
                 if (newFocus != null) {
                     newFocus.bringToFront();// 防止放大的view被压在下面. (建议使用MainLayout)
-                    mMainUpView1.setFocusView(newFocus, preFocusView, 1.20f);
+                    mMainUpView1.setFocusView(newFocus, preFocusView, 1.05f);
                     preFocusView = newFocus; // 4.3以下需要自己保存.
                 }
 
@@ -298,15 +301,12 @@ public class FrontPageActivity extends BaseActivity implements ViewImpl {
     protected void onStop() {
         super.onStop();
         //在onStop()方法里执行取消网络请求的操作会使退出应用后在进入应用无数据显示
-//        VolleyManager.getInstance(this).cancelRequest("topicInfo");
-//        VolleyManager.getInstance(this).cancelRequest("recommendInfo");
+        VolleyManager.getInstance(this).cancelRequest(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         PresenterHolder.getInstance().remove(this);
-        //VolleyManager.getInstance(this).cancelRequest("topicInfo");
-        //VolleyManager.getInstance(this).cancelRequest("recommendInfo");
     }
 }

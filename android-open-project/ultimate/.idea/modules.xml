@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/libraries/AndroidTVWidget/AndroidTvWidget/AndroidTvWidget.iml" filepath="$PROJECT_DIR$/libraries/AndroidTVWidget/AndroidTvWidget/AndroidTvWidget.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/greendao/greendao.iml" filepath="$PROJECT_DIR$/greendao/greendao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/okhttputils-master/okhttputils/okhttputils.iml" filepath="$PROJECT_DIR$/libraries/okhttputils-master/okhttputils/okhttputils.iml" />
       <module fileurl="file://$PROJECT_DIR$/ultimate.iml" filepath="$PROJECT_DIR$/ultimate.iml" />
     </modules>
   </component>

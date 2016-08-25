@@ -106,7 +106,7 @@ public class ChannelFragmentActivity extends BaseFragmentActivitiy implements Vi
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        mPresenter.VolleyRequestWithAuth(json, "subChannelInfo", -1, InterfaceType.getCatalogInfo);
+        mPresenter.VolleyRequestWithAuth(json, this, -1, InterfaceType.getCatalogInfo);
     }
 
     @Override

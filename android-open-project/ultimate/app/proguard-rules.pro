@@ -93,16 +93,8 @@
 -keep public class * extends android.view.View{
     *** get*();
     void set*(***);
-#    public (android.content.Context);
-#    public (android.content.Context, android.util.AttributeSet);
-#    public (android.content.Context, android.util.AttributeSet, int);
 }
 
-# 保持自定义控件类不被混淆
-#-keepclasseswithmembers class * {
-#    public (android.content.Context, android.util.AttributeSet);
-#    public (android.content.Context, android.util.AttributeSet, int);
-#}
 #保持 Serializable 不被混淆
 -keepclassmembers class * implements java.io.Serializable {
     static final long serialVersionUID;
@@ -154,8 +146,8 @@
 
 
 #---------------------------------4.基本指令区----------------------------------
-#指定代码的压缩级别
--optimizationpasses 5
+#不进行代码压缩
+-dontoptimize
 #不去忽略非公共的库类
 -dontskipnonpubliclibraryclassmembers
 #混淆前后的映射
@@ -164,6 +156,8 @@
 -optimizations !code/simplification/cast,!field/*,!class/merging/*
 #保护注解
 -keepattributes *Annotation*,InnerClasses
+#保护反射
+-keepattributes EnclosingMethod
 #保护签名
 -keepattributes Signature
 -keepattributes SourceFile,LineNumberTable

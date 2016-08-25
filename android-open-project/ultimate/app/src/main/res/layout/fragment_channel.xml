@@ -20,6 +20,8 @@
         android:layout_height="@dimen/d435"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/d8"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/d120"
         android:focusable="false"
         android:max="100"
         android:progress="100"

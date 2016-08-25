@@ -8,12 +8,12 @@
         "source": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\res\\layout\\open_listview_view.xml"
     },
     {
-        "merged": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\res\\merged\\release\\layout\\list_menu_item_icon.xml",
-        "source": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\res\\layout\\list_menu_item_icon.xml"
-    },
-    {
         "merged": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\res\\merged\\release\\layout\\list_menu_item_layout.xml",
         "source": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\res\\layout\\list_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\res\\merged\\release\\layout\\list_menu_item_icon.xml",
+        "source": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\res\\layout\\list_menu_item_icon.xml"
     },
     {
         "merged": "D:\\Documents\\GitHub\\android-open-project\\ultimate\\libraries\\AndroidTVWidget\\AndroidTvWidget\\build\\intermediates\\res\\merged\\release\\layout\\tabhost_title_head.xml",

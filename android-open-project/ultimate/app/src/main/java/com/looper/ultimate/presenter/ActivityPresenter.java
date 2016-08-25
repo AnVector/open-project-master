@@ -9,11 +9,17 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.looper.ultimate.common.InterfaceType;
 import com.looper.ultimate.common.UrlMatch;
 import com.looper.ultimate.common.VolleyManager;
+import com.looper.ultimate.util.HttpHeaderUtil;
+import com.looper.ultimate.util.LogUtils;
 import com.looper.ultimate.util.VolleyRequestWithAuth;
 import com.looper.ultimate.view.View;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.json.JSONObject;
 
+import okhttp3.Call;
+import okhttp3.MediaType;
 import rx.Subscriber;
 
 /**
@@ -89,5 +95,32 @@ public class ActivityPresenter extends PresenterImpl {
         });
         mRequest.setTag(tag);
         VolleyManager.getInstance(getContext()).addToRequestQueue(mRequest);
+    }
+
+    public void OkHttpRequestWithAuth(JSONObject json,Object tag,final int page,final InterfaceType type) {
+        OkHttpUtils
+                .postString() //return RequestBuilder
+                .url(UrlMatch.getInterfaceUrl(type)) //uri
+                .tag(tag)//tag
+                .mediaType(MediaType.parse("application/json; charset=utf-8")) //MIME
+                .content(json.toString()) //body
+                .headers(HttpHeaderUtil.getHeader(getContext())) //header
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        if(isViewAttached()){
+                            getView().onSuccess(e.toString(),page,type);
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if(isViewAttached()){
+                            getView().onSuccess(response.toString(),page,type);
+                            LogUtils.e("okhttp",""+response.toString());
+                        }
+                    }
+                });
     }
 }

@@ -9,7 +9,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONObject;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -25,17 +24,6 @@ public class VolleyRequestWithAuth extends JsonObjectRequest {
 
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
-
-        Map<String, String> mHeader = new HashMap<>();
-        mHeader.put("Client-Agent", HttpHeaderUtil.getClientAgent(mContext));
-        mHeader.put("APIVersion", "2.7");
-        mHeader.put("Content-Type", "application/json;charset=utf-8");
-        mHeader.put("ClientHash", HttpHeaderUtil.encryptClientHash("",mContext));
-        mHeader.put("terminalUniqueId","3256462645634434564");
-        mHeader.put("user-id", "");
-        mHeader.put("tokenId", "");
-        mHeader.put("X-Channel-Code", "J00140001");
-        mHeader.put("sub_version","ZJJK");
-        return mHeader;
+        return HttpHeaderUtil.getHeader(mContext);
     }
 }
